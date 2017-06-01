@@ -1,8 +1,18 @@
 import os, shutil
 from PIL import Image
-
+'''
+Renombra esta clase a Biblioteca o Clasificador
+'''
 class Listaim:
 	def __init__(self):
+'''
+Aqui puedes utilizar un diccionario para las categorias, las categorias son las llaves del diccionario
+
+self.Categorias = {}
+Categorias= {"perritos":[23,34,5,6],"gatitos":[2,4,6,]}
+Si observas la lista de cada categoria son las imagenes que se agregaron a ella.
+
+'''
 		self.lista=[]
 		
 	def revisar(self):
@@ -52,6 +62,10 @@ class Listaim:
 		informacion.close()
 			
 	def contar_etiquetas(self):
+		''' Las etiquetas son de la Variable de Clase self.Categorias entonces como es un diccionario
+		solo es necesario obtener el keys() y con eso sabemos cuantas categorias tenemos.
+		
+		'''
 		etiquetas={}
 		for i in self.lista:
 			if i.etiqueta in etiquetas:
@@ -61,6 +75,11 @@ class Listaim:
 		return etiquetas
 		
 	def mostrar_imagenes(self):
+	'''
+	Aqui lo importantes que solo se muestren las imagenes de cierta categoria o aquellas que no tienen asignada 
+	una etiqueta. Recordemos que etiqueta y Categoria son lo mismo.
+	
+	'''
 		for i in self.lista:
 			nombre=i.ruta.split('/')[-1]
 			print nombre,':',i.etiqueta
@@ -68,7 +87,9 @@ class Listaim:
 			ver=Image.open(i.ruta)
 			ver.show()
 			raw_input('Siguiente (enter)')
-		
+'''
+Renombrar esta clase a Imagen ya que lo que guardamos son objetos imagen
+'''
 class Etiqueta:
 	def __init__(self,ruta,etiqueta,comentario):
 		self.ruta=ruta
